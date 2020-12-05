@@ -78,19 +78,19 @@ class PitchListener:
                 if(len(pitchList) >= 5):
                     pitchList.pop(0)
                 if(tuneList.isTune(pitchList)):
-                    if(DEBUG)
+                    if(DEBUG):
                         print("Tune correct!")
                     
                     pitchList = []
                     if(self.ikea.getStatus(3)):
-                        if(DEBUG)
+                        if(DEBUG):
                             print("Turning on!")
                         self.ikea.turnOnLight(2, 0)
                         self.ikea.turnOnLight(3, 0)
                         self.ikea.turnOnLight(4, 0)
                         self.ikea.turnOnLight(6, 0)
                     else:
-                        if(DEBUG)
+                        if(DEBUG):
                             print("Turning off!")
                         self.ikea.turnOnLight(2, 50)
                         self.ikea.turnOnLight(3, 50)
