@@ -23,6 +23,7 @@ METHOD = "default"
 SAMPLE_RATE = 44100
 HOP_SIZE = BUFFER_SIZE//2
 PERIOD_SIZE_IN_FRAME = HOP_SIZE
+DEBUG = True
 
 class PitchListener:
 
@@ -77,9 +78,22 @@ class PitchListener:
                 if(len(pitchList) >= 5):
                     pitchList.pop(0)
                 if(tuneList.isTune(pitchList)):
+                    if(DEBUG)
+                        print("Tune correct!")
+                    
                     pitchList = []
                     if(self.ikea.getStatus(3)):
+                        if(DEBUG)
+                            print("Turning on!")
+                        self.ikea.turnOnLight(2, 0)
                         self.ikea.turnOnLight(3, 0)
+                        self.ikea.turnOnLight(4, 0)
+                        self.ikea.turnOnLight(6, 0)
                     else:
+                        if(DEBUG)
+                            print("Turning off!")
+                        self.ikea.turnOnLight(2, 50)
                         self.ikea.turnOnLight(3, 50)
+                        self.ikea.turnOnLight(4, 50)
+                        self.ikea.turnOnLight(6, 50)
 x = PitchListener();
